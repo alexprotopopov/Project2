@@ -4,12 +4,10 @@ package jm.task.core.jdbc;
 import jm.task.core.jdbc.dao.UserDao;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.util.Util;
+import static jm.task.core.jdbc.service.UserServiceImpl.userDao;
 
 public class Main {
     public static void main(String[] args) {
-        Util.getConnection();
-
-        UserDao userDao = new UserDaoJDBCImpl();
 
         userDao.createUsersTable();
 
@@ -23,7 +21,6 @@ public class Main {
         userDao.cleanUsersTable();
         userDao.dropUsersTable();
     }
-
 }
 
 
