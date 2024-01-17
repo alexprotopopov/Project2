@@ -21,7 +21,6 @@ public class UserDaoHibernateImpl implements UserDao {
                             "name varchar(255), lastName varchar(255), age int)")
                     .executeUpdate();
             session.getTransaction().commit();
-            //System.out.println("База данных созадана");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,7 +32,6 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             session.createSQLQuery("DROP TABLE IF EXISTS Users").executeUpdate();
             session.getTransaction().commit();
-           // System.out.println("таблица пользователей удалена");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,7 +60,6 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createSQLQuery("delete from Users where id = :id")
                     .setParameter("id", id).executeUpdate();
             session.getTransaction().commit();
-           // System.out.println("Строчка по ID удалена");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,7 +71,6 @@ public class UserDaoHibernateImpl implements UserDao {
         try (Session session = Util.getSessionFactory().openSession()) {
             session.beginTransaction();
             usersList = session.createQuery("from User").list();
-           // System.out.println("Получение Users");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,7 +83,6 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             session.createSQLQuery("DELETE from Users").executeUpdate();
             session.getTransaction().commit();
-            //System.out.println("Таблица очищена");
         } catch (Exception e) {
             e.printStackTrace();
         }

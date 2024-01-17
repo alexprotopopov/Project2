@@ -1,12 +1,15 @@
 package jm.task.core.jdbc.util;
 
 import jm.task.core.jdbc.model.User;
-import org.hibernate.*;
+import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.*;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 
@@ -23,18 +26,12 @@ public class Util {
         try {
             Class.forName(DB_DRIVER);
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            {
-                //    System.out.println("We are connected!");
-            }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("there is no connection... Exception!");
         }
         return connection;
     }
 
-    //    public static SessionFactory factory = new Configuration().configure()
-//            .addAnnotatedClass(User.class)
-//            .buildSessionFactory();
     private static SessionFactory sessionFactory;
 
     public static SessionFactory getSessionFactory() {
